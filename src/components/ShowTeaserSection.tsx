@@ -1,40 +1,117 @@
 import { Button } from './ui/button'
+import { REVEAL_2027 } from '../config/reveal'
 
 interface ShowTeaserSectionProps {
   onSectionClick?: (sectionId: string) => void
 }
+
+// DRAFT COPY: the theme paragraph and walk descriptions below are condensed
+// from the 2027 theme PDF notes and still need committee sign-off.
+const walks = [
+  {
+    number: 'Walk One',
+    name: 'His',
+    description: 'The performance of masculinity: a restrictive yet impactful mode of expression.',
+  },
+  {
+    number: 'Walk Two',
+    name: 'Her',
+    description:
+      'The performance of femininity: free yet contested, taboo and dangerous. Bolder, experimental and varied, from the ballrooms of eighteenth-century France to the ballrooms of twentieth-century Harlem.',
+  },
+  {
+    number: 'Walk Three',
+    name: 'Macabre',
+    description:
+      'An ode to the key role that darker movements have played in the development of counter-cultural style. A celebration of otherness.',
+  },
+  {
+    number: 'Walk Four',
+    name: 'Filth',
+    description: 'Beauty and ugliness as binary oppositions. Pushing back against, and beyond, tradition.',
+  },
+  {
+    number: 'Walk Five',
+    name: 'Perform',
+    description:
+      'The show’s ethos: the performative nature of style and fashion, and the countercultural idea of identity as a performance. Bright, bold, unapologetic.',
+  },
+]
 
 export function ShowTeaserSection({ onSectionClick }: ShowTeaserSectionProps) {
   // Suppress unused variable warning
   console.log(onSectionClick)
 
   return (
-    <section id="show" className="py-16 px-6 bg-muted/10 relative">
-      <div className="max-w-3xl mx-auto text-center relative">
+    <section id="show" className="py-24 px-6 bg-muted/10 relative">
+      <div className="max-w-5xl mx-auto">
         {/* Titles */}
-        <h2 className="text-4xl md:text-5xl tracking-[-0.02em] font-light mb-6">
-          The Show
-        </h2>
-        <h3 className="text-sm uppercase tracking-[0.15em] text-muted-foreground mb-2">
-          Theme
-        </h3>
-        <h4 className="text-2xl md:text-3xl font-light tracking-wide mb-6">
-          A Walk of Becoming, Eras Unravelled
-        </h4>
-        <div className="w-24 h-px bg-foreground mx-auto mb-10" />
-
-        {/* Teaser block (blurred smaller) */}
-        <div className="blur-[8px] select-none pointer-events-none max-w-md mx-auto">
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-2">
-            Announcement coming soon
-          </p>
-          <p className="text-sm md:text-base text-muted-foreground">
-            Date • Venue • Theme
-          </p>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl tracking-[-0.02em] font-light mb-6">
+            The Show
+          </h2>
+          {REVEAL_2027 && (
+            <>
+          <h3 className="text-sm uppercase tracking-[0.15em] text-muted-foreground mb-2">
+            2027 Theme
+          </h3>
+          <h4 className="text-2xl md:text-3xl font-light tracking-wide mb-2">
+            The Other Way
+          </h4>
+          <p className="text-sm tracking-widest text-muted-foreground mb-6">#TheOtherWay</p>
+            </>
+          )}
+          <div className="w-24 h-px bg-foreground mx-auto" />
         </div>
 
-        {/* Instagram Button Overlay - lowered */}
-        <div className="absolute inset-x-0 bottom-16 flex items-center justify-center">
+        {REVEAL_2027 && (
+          <>
+        {/* Theme description */}
+        <div className="max-w-3xl mx-auto text-muted-foreground leading-relaxed space-y-5 mb-12">
+          <p>
+            CUCFS 2027 celebrates the fashion and cultural movements that are experimental, alternative
+            and resistant: the modes of expression that have moved, and continue to move, fashion, art
+            and culture to new places. The show recognises how ubiquitously influential this kind of
+            fashion and art has been, and hopes to provoke thought and conversation about the
+            complexities of identity and expression.
+          </p>
+          <p>
+            Performance is integral to fashion. This year we ask how clothes convey, and relate to,
+            meaning, inspired by Susan Sontag’s ideas about aesthetic value, stylisation and artifice in
+            her ‘Notes on Camp’.
+          </p>
+          <blockquote className="border-l border-foreground/40 pl-6 italic">
+            ‘Camp sees everything in quotation marks. It’s not a lamp but a ‘lamp’: not a woman, but a
+            ‘woman’. To perceive Camp in objects and persons is to understand Being-as-Playing-a-Role.
+            It is the farthest extension, in sensibility, of the metaphor of life as theater.’
+            <span className="block not-italic text-xs tracking-widest mt-3">— Susan Sontag, Notes on Camp</span>
+          </blockquote>
+        </div>
+
+        {/* Walks */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-14">
+          {walks.map((walk) => (
+            <div
+              key={walk.name}
+              className="bg-card/50 p-5 rounded-lg border border-border/20 hover:border-border/40 transition-all duration-300"
+            >
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">{walk.number}</p>
+              <h5 className="text-xl font-light tracking-wide mb-3">{walk.name}</h5>
+              <p className="text-sm text-muted-foreground leading-relaxed">{walk.description}</p>
+            </div>
+          ))}
+        </div>
+
+          </>
+        )}
+
+        {/* Date / venue + Instagram */}
+        <div className="text-center">
+          <p className="text-sm md:text-base text-muted-foreground mb-8">
+            {REVEAL_2027
+              ? 'Date and venue to be announced.'
+              : 'Announcement coming soon. Date, venue and theme to be revealed.'}
+          </p>
           <Button
             asChild
             size="sm"

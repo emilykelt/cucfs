@@ -5,33 +5,29 @@ import { Logo } from './Logo'
 
 type Page = 'home' | 'archive' | 'committee' | 'about' | 'charity' | 'show' | 'partners' | 'zine' | 'contact'
 
+export type ArchiveYear = '2026' | '2025'
+
+// Stops on the top-bar timeline, newest first
+const archiveYears: ArchiveYear[] = ['2026', '2025']
+
 interface NavigationProps {
   currentPage: Page
   activeSection: string
+  archiveYear: ArchiveYear
   onNavigation: (page: Page, section?: string) => void
+  onArchiveYear: (year: ArchiveYear) => void
 }
 
-export function Navigation({ currentPage, activeSection, onNavigation }: NavigationProps) {
+export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYear }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
-  // Central navigation tabs (for home page sections)
-  const centralNavItems = [
-    { id: 'home', label: 'Home', type: 'section' as const },
-    { id: 'about', label: 'About', type: 'section' as const },
-    { id: 'charity', label: 'Our Purpose', type: 'section' as const },
-    { id: 'sponsors', label: 'Partners', type: 'section' as const },
-    { id: 'show', label: 'Show', type: 'section' as const },
-    { id: 'contact', label: 'Contact', type: 'section' as const },
-    { id: 'book', label: 'Book', type: 'external' as const, url: 'https://fetch.ai/cucfs' }
-  ]
-
   // All pages (for menu)
   const allPages = [
-    { id: 'home', label: 'Home', type: 'section' as const },
-    { id: 'charity', label: 'Our Charities', type: 'page' as const },
-    { id: 'partners', label: 'Sponsors & Partners', type: 'page' as const },
+    { id: 'home', label: 'Home', type: 'page' as const },
+    { id: 'charity', label: 'Charities', type: 'page' as const },
+    { id: 'partners', label: 'Partners', type: 'page' as const },
     { id: 'committee', label: 'Committee', type: 'page' as const },
     { id: 'archive', label: 'Archive', type: 'page' as const },
     { id: 'zine', label: 'Zine', type: 'page' as const },
@@ -62,48 +58,16 @@ export function Navigation({ currentPage, activeSection, onNavigation }: Navigat
       return
     }
     
-    if (item.type === 'page') {
-      // Navigate to dedicated page
-      onNavigation(item.id as Page)
-    } else {
-      // Home section - scroll to section on home page
-      if (currentPage !== 'home') {
-        onNavigation('home')
-        setTimeout(() => scrollToSection(item.id), 100)
-      } else {
-        scrollToSection(item.id)
-      }
-    }
+    // Every other menu item is a dedicated page
+    onNavigation(item.id as Page)
     setIsMenuOpen(false)
   }
 
-  const handleCentralNavClick = (item: typeof centralNavItems[0]) => {
-    // Handle external links
-    if (item.type === 'external' && 'url' in item) {
-      window.open(item.url, '_blank', 'noopener,noreferrer')
-      return
-    }
-    // All other central nav items are sections - scroll to section on home page
-    scrollToSection(item.id)
-  }
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      onNavigation('home', sectionId)
-    }
-  }
-
-  const getActiveState = (item: typeof allPages[0]) => {
+  const getActiveState = (item: { id: string; type: 'page' | 'section' | 'external' }) => {
     if (item.type === 'external') {
       return false // External links are never "active"
     }
-    if (item.type === 'page') {
-      return currentPage === item.id
-    } else {
-      return currentPage === 'home' && activeSection === item.id
-    }
+    return currentPage === item.id
   }
 
   return (
@@ -113,12 +77,12 @@ export function Navigation({ currentPage, activeSection, onNavigation }: Navigat
     animate={{ y: 0, opacity: 1 }}
   
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled 
-            ? 'bg-background/80 backdrop-blur-md border-b border-border/20' 
-            : 'bg-transparent'
+          isScrolled
+            ? 'bg-background border-b border-border/20'
+            : 'bg-background'
         }`}
       >
-        <div className="flex items-center justify-between px-8 py-6 max-w-full">
+        <div className="flex items-center justify-between px-8 py-5 max-w-full">
           {/* Logo - positioned at very left edge */}
           <motion.div
             whileHover={isMobile ? undefined : { scale: 1.05 }}
@@ -128,53 +92,59 @@ export function Navigation({ currentPage, activeSection, onNavigation }: Navigat
             <Logo className="h-10" />
           </motion.div>
 
-          {/* Central Navigation Tabs - only show on home page, perfectly centered */}
-          {currentPage === 'home' && (
-            <div className="hidden md:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 space-x-8">
-              {centralNavItems.map((item) => {
-                const isExternal = item.type === 'external' && 'url' in item
-                const isActive = !isExternal && getActiveState(item)
-                
-                if (isExternal) {
-                  return (
-                    <motion.a
-                      key={item.id}
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium transition-colors duration-300 focus:outline-none relative whitespace-nowrap text-muted-foreground hover:text-foreground"
-                      whileHover={isMobile ? undefined : { y: -2 }}
-                    >
-                      {item.label}
-                    </motion.a>
-                  )
-                }
-                
+          {/* Centre: Home, then the archive years */}
+          <div className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2 gap-10 text-sm">
+            <button
+              onClick={() => onNavigation('home', 'home')}
+              className={`relative font-medium transition-colors duration-300 focus:outline-none ${
+                currentPage === 'home' ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              Home
+              {currentPage === 'home' && (
+                <motion.span layoutId="nav-underline" className="absolute -bottom-1.5 left-0 right-0 h-px bg-foreground" />
+              )}
+            </button>
+
+            <span className="h-4 w-px bg-foreground/20" aria-hidden="true" />
+
+            {/* Archive timeline: one dot per past show, the filled dot slides to the year being viewed */}
+            <div className="relative flex items-center gap-14 px-1 pt-1" role="group" aria-label="Archive years">
+              <div className="absolute left-3 right-3 top-[9px] h-px bg-foreground/50" aria-hidden="true" />
+              {archiveYears.map((year) => {
+                const isActive = currentPage === 'archive' && archiveYear === year
                 return (
-                <motion.button
-                  key={item.id}
-                  onClick={() => handleCentralNavClick(item)}
-                  className={`text-sm font-medium transition-colors duration-300 focus:outline-none relative whitespace-nowrap ${
-                      isActive
-                      ? 'text-primary'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                  whileHover={isMobile ? undefined : { y: -2 }}
-                >
-                  {item.label}
-                    {isActive && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                      initial={isMobile ? undefined : { scaleX: 0 }}
-                      animate={isMobile ? undefined : { scaleX: 1 }}
-                      transition={isMobile ? undefined : { duration: 0.3 }}
-                    />
-                  )}
-                </motion.button>
+                  <button
+                    key={year}
+                    onClick={() => {
+                      onArchiveYear(year)
+                      onNavigation('archive')
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }}
+                    aria-pressed={isActive}
+                    className="relative flex flex-col items-center gap-1.5 focus:outline-none group"
+                  >
+                    <span className="relative block w-[11px] h-[11px] rounded-full border border-foreground bg-background group-hover:bg-foreground/30 transition-colors">
+                      {isActive && (
+                        <motion.span
+                          layoutId="timeline-thumb"
+                          className="absolute -inset-[3px] rounded-full bg-foreground"
+                          transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                        />
+                      )}
+                    </span>
+                    <span
+                      className={`text-xs tracking-widest transition-colors ${
+                        isActive ? 'text-foreground font-medium' : 'text-muted-foreground group-hover:text-foreground'
+                      }`}
+                    >
+                      {year}
+                    </span>
+                  </button>
                 )
               })}
             </div>
-          )}
+          </div>
 
           {/* Right side - Home icon, Theme toggle and Menu button */}
           <div className="flex items-center space-x-4 flex-shrink-0">
@@ -244,13 +214,13 @@ export function Navigation({ currentPage, activeSection, onNavigation }: Navigat
                       onClick={() => handleItemClick(item)}
                       initial={isMobile ? undefined : { x: 50, opacity: 0 }}
                       animate={isMobile ? undefined : { x: 0, opacity: 1 }}
-                      transition={isMobile ? undefined : { duration: 0.3, delay: index * 0.1, ease: "easeOut" }}
-                      className={`w-full text-left text-xl tracking-wide transition-colors duration-300 focus:outline-none relative py-3 block ${
+                      transition={isMobile ? undefined : { duration: 0.25, delay: index * 0.04, ease: 'easeOut' }}
+                      className={`w-full text-left text-xl tracking-wide transition-colors duration-150 focus:outline-none relative py-3 block ${
                         getActiveState(item)
                           ? 'text-primary font-medium'
                           : 'text-foreground hover:text-primary'
                       }`}
-                      whileHover={isMobile ? undefined : { x: 10 }}
+                      whileHover={isMobile ? undefined : { x: 10, transition: { duration: 0.15, ease: 'easeOut' } }}
                     >
                       {item.label}
                       {getActiveState(item) && (

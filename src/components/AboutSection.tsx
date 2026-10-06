@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { PurpleGlare } from './PurpleGlare'
+import { REVEAL_2027 } from '../config/reveal'
 
 interface AboutSectionProps {
   onSectionClick?: (sectionId: string) => void
@@ -59,13 +60,14 @@ export function AboutSection({ onSectionClick }: AboutSectionProps) {
             </h2>
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-              The Cambridge University Charity Fashion Show first launched in 2014, and since then, has hosted an annual show celebrating up and coming designers and their talent, as well as championing charities who create positive change in the local Cambridge community.             
+              The Cambridge University Charity Fashion Show first launched in 2014, and since then, has hosted an annual show to celebrate emerging student designers and their passion for creativity, as well as championing charities who create positive change in our local Cambridge community.
               </p>
               <p>
-              Last year was our most successful year yet, with the show being hosted at the prestigious Cambridge Union. We featured more than 25 incredible designers, and 75 designs. With more than 400 attendees on the day of the show celebrating creativity and social change. 
+              {/* TODO: replace XYZ with the 2026 designer and design counts */}
+              Our 2026 show titled, ‘A Walk of Becoming’ celebrated the intersection between social change and design, with each walk focusing on an era of history or creativity. We featured XYZ designers, and XYZ designs, with all proceeds being donated to the charity, Refuge.
               </p>
               <p>
-              Stay tuned for more information about our upcoming 2026 show!
+              Stay tuned for more information about our upcoming 2027 show!
               </p>
             </div>
           </div>
@@ -80,17 +82,30 @@ export function AboutSection({ onSectionClick }: AboutSectionProps) {
               <h3 className="text-2xl tracking-[-0.01em] font-light mb-6">President's Letter</h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p className="italic">
-                  "Working with such an incredible team on the Cambridge University Charity Fashion Show is the absolute highlight of my time at Cambridge. 
-                  Coordinating such a large event is challenging, but so rewarding, and I am so proud of everyone’s efforts throughout the process 
-                  of organising our 2025 showcase! 
-
+                  "My involvement in CUCFS has been an incredible privilege. To lead a society which champions creative expression, from promoting young designers from across the country to bringing together over one hundred Cambridge students in the show’s production, has undoubtedly been one of the highlights of my university experience.
                 </p>
                 <p className="italic">
-                  2026 is set to be even bigger and better than ever before, with more designers, more designs, and even more creativity. 
-                  We can’t wait to show you all what we’ve been working on!"
+                  Community is at the heart of CUCFS and it is something we are continually endeavouring to strengthen; we are immensely proud this year to be championing{' '}
+                  {REVEAL_2027 ? (
+                    'Everyone’s Invited, a charity working to eradicate rape culture from the bottom up.'
+                  ) : (
+                    <>
+                      <span
+                        className="inline-block align-baseline bg-foreground text-background not-italic text-[0.7em] tracking-[0.25em] uppercase px-2 py-0.5 select-none"
+                        title="To be announced"
+                        aria-label="charity redacted until announced"
+                      >
+                        Redacted
+                      </span>
+                      .
+                    </>
+                  )}
+                </p>
+                <p className="italic">
+                  I am hugely excited for all of our attendees to see the realisation of everyone’s hard work and talent, and to feel the joy that I did when attending the CUCFS show in my first year. Here’s to CUCFS 2027!"
                 </p>
                 <div className="pt-4">
-                  <p className="text-sm tracking-wider">— Paige Griffiths, President</p>
+                  <p className="text-sm tracking-wider">— Eliza Doran, President</p>
                 </div>
               </div>
             </div>

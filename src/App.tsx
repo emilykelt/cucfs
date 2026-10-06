@@ -1,6 +1,5 @@
 import { Router } from './components/Router'
 import { ThemeProvider } from './contexts/ThemeContext'
-import { MetallicCursor } from './components/MetallicCursor'
 import { MotionConfig } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
@@ -19,9 +18,8 @@ export default function App() {
   return (
     <ThemeProvider>
       <MotionConfig reducedMotion={isSmallScreen ? 'always' : 'user'}>
-        <div className="metallic-cursor overflow-x-hidden">
+        <div className="overflow-x-hidden">
           <Router />
-          <MetallicCursor />
         </div>
       </MotionConfig>
     </ThemeProvider>

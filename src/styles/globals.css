@@ -239,61 +239,6 @@
     padding: 0;
   }
 
-  /* Hide native cursor on desktop only, within metallic-cursor wrapper */
-  @media (hover: hover) and (pointer: fine) {
-    .metallic-cursor,
-    .metallic-cursor * {
-      cursor: none !important;
-    }
-  }
-
-  .cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    background: linear-gradient(45deg, #c0c0c0, #e8e8e8, #a8a8a8);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    box-shadow: 
-      0 0 8px rgba(192, 192, 192, 0.4),
-      inset 0 1px 2px rgba(255, 255, 255, 0.4),
-      inset 0 -1px 2px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform: translate(-50%, -50%);
-  }
-
-  .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    border: 1px solid rgba(192, 192, 192, 0.3);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform: translate(-50%, -50%);
-  }
-
-  .cursor-hover .cursor-dot {
-    transform: translate(-50%, -50%) scale(2);
-    background: linear-gradient(45deg, #d4af37, #ffd700, #b8860b);
-    box-shadow: 
-      0 0 12px rgba(212, 175, 55, 0.6),
-      inset 0 2px 4px rgba(255, 255, 255, 0.5),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.4);
-  }
-
-  .cursor-hover .cursor-ring {
-    transform: translate(-50%, -50%) scale(1.8);
-    border-color: rgba(212, 175, 55, 0.7);
-    border-width: 2px;
-  }
 }
 
 /* Mobile performance optimizations */
@@ -376,4 +321,18 @@
 
 html {
   font-size: var(--font-size);
+}
+
+/* Heading font: Hillside Sans (see public/fonts/HILLSIDE-LICENCE-README.txt) */
+@font-face {
+  font-family: 'Hillside Sans';
+  src: url('/fonts/HillsideSans.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Hillside Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  letter-spacing: 0.02em;
 }

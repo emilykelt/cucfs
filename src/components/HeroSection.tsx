@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import { useRef, } from 'react'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { REVEAL_2027 } from '../config/reveal'
 
 // CUCFS model image
-const modelImage = '/hero_model.png'
+const modelImage = '/hero_model.webp'
 
 interface HeroSectionProps {
   onSectionClick?: (sectionId: string) => void
@@ -22,22 +23,17 @@ export function HeroSection({ onSectionClick }: HeroSectionProps) {
       className="min-h-[120vh] flex items-center justify-center relative overflow-hidden"
       ref={containerRef}
     >
-      {/* Model overlay - positioned to flow beyond viewport */}
-      <motion.div 
-        className="absolute right-0 top-0 w-[60%] h-[110vh] z-20 pointer-events-none md:w-[60%] sm:w-[70%] w-[80%]"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-      >
+      {/* Full-width backdrop that contrasts with the theme (black in light mode, white in dark mode) */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-black dark:bg-white overflow-hidden">
         <img
           src={modelImage}
           alt="CUCFS Fashion model"
-          className="w-full h-full object-cover object-left opacity-60"
+          className="absolute right-0 top-0 h-full w-[80%] sm:w-[70%] md:w-[55%] object-cover object-left"
         />
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/80" />
-      </motion.div>
+      </div>
 
       <motion.div 
-        className="relative z-10 text-left max-w-6xl mx-auto px-6 flex items-center min-h-screen"
+        className="relative z-10 text-left max-w-6xl mx-auto px-6 flex items-center min-h-screen w-full mix-blend-difference text-white"
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
       >
@@ -52,9 +48,9 @@ export function HeroSection({ onSectionClick }: HeroSectionProps) {
               CUCFS
             </h1>
             <h1 className="text-7xl md:text-8xl lg:text-9xl tracking-[-0.03em] font-light mb-8 leading-none">
-              2026
+              2027
             </h1>
-            <div className="w-24 h-px bg-foreground mb-8" />
+            <div className="w-24 h-px bg-white mb-8" />
           </motion.div>
 
 
@@ -65,15 +61,17 @@ export function HeroSection({ onSectionClick }: HeroSectionProps) {
             className="max-w-lg"
           >
 
-            <p className="text-lg tracking-wide text-muted-foreground leading-none">
+            <p className="text-lg tracking-wide text-white/80 leading-none">
              Cambridge University 
             </p>
-            <p className="text-lg tracking-wide text-muted-foreground leading-none">
+            <p className="text-lg tracking-wide text-white/80 leading-none">
              Charity Fashion Show
             </p>
-            <p className="text-lg tracking-wide text-muted-foreground leading-[3rem]">
-             #AWalkOfBecoming
-            </p>
+            {REVEAL_2027 && (
+              <p className="text-lg tracking-wide leading-[3rem]">
+               #TheOtherWay
+              </p>
+            )}
           </motion.div>
 
           <motion.div
@@ -83,9 +81,9 @@ export function HeroSection({ onSectionClick }: HeroSectionProps) {
             className="mt-12"
           >
             <div className="flex">
-              <div className="w-px h-12 bg-muted-foreground/50" />
+              <div className="w-px h-12 bg-white/50" />
             </div>
-            <p className="text-xs tracking-widest text-muted-foreground mt-4">SCROLL TO EXPLORE</p>
+            <p className="text-xs tracking-widest text-white/80 mt-4">SCROLL TO EXPLORE</p>
           </motion.div>
         </div>
       </motion.div>

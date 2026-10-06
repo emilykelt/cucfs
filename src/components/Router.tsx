@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Navigation } from './Navigation'
+import { Navigation, type ArchiveYear } from './Navigation'
 import { HomePage } from './HomePage'
 import { ArchivePage } from './ArchivePage'
 import { CommitteePage } from './CommitteePage'
@@ -15,6 +15,7 @@ export type Page = 'home' | 'archive' | 'committee' | 'about' | 'charity' | 'sho
 export function Router() {
   const [currentPage, setCurrentPage] = useState<Page>('home')
   const [activeSection, setActiveSection] = useState('home')
+  const [archiveYear, setArchiveYear] = useState<ArchiveYear>('2026')
 
   useEffect(() => {
     let ticking = false
@@ -62,7 +63,7 @@ export function Router() {
       case 'home':
         return <HomePage activeSection={activeSection} onSectionChange={setActiveSection} onNavigation={handleNavigation} />
       case 'archive':
-        return <ArchivePage />
+        return <ArchivePage year={archiveYear} onYearChange={setArchiveYear} />
       case 'committee':
         return <CommitteePage />
       case 'about':
@@ -83,7 +84,7 @@ export function Router() {
   const footerNavItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'charity', label: 'Our Purpose' },
+    { id: 'charity', label: 'Charities' },
     { id: 'show', label: 'Show' },
     { id: 'sponsors', label: 'Partners' },
     { id: 'contact', label: 'Contact' },
@@ -96,6 +97,8 @@ export function Router() {
       <Navigation 
         currentPage={currentPage}
         activeSection={activeSection} 
+        archiveYear={archiveYear}
+        onArchiveYear={setArchiveYear}
         onNavigation={handleNavigation}
       />
       
@@ -129,7 +132,7 @@ export function Router() {
             </div>
             <div className="text-center">
               <p className="text-sm tracking-widest text-muted-foreground">
-                © 2025 CUCFS. ALL RIGHTS RESERVED.
+                © 2026 CUCFS. ALL RIGHTS RESERVED.
               </p>
             </div>
           </div>

@@ -21,6 +21,12 @@ const interviews: Interview[] = [
   },
 ]
 
+const zineMedia = [
+  { src: '/zine/zine-2026-1.jpg', alt: 'Sophie Keates spread from the 2026 CUCFS zine', landscape: true },
+  { src: '/zine/zine-2026-2.jpg', alt: '2026 CUCFS zine page', landscape: false },
+  { src: '/zine/zine-2026-3.jpg', alt: '2026 CUCFS zine page', landscape: false },
+]
+
 function useZinePassword() {
   const [passwordInput, setPasswordInput] = useState('')
   const [unlocked, setUnlocked] = useState(false)
@@ -82,10 +88,37 @@ export function ZinePage() {
             </h1>
             <div className="w-24 h-px bg-foreground mb-6" />
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Here you can explore the full, unedited
-              interviews with our designers and collaborators.
+              Alongside the charity fashion show, CUCFS publishes an annual zine spotlighting emerging
+              and established designers. Each issue pairs exclusive interviews, BTS features and
+              photography with designs inspired by the fashion show, aiming to nurture a more curious
+              and critically engaged approach to fashion. Copies are available for pre-order, purchase
+              at the show and afterwards through our online shop.
             </p>
           </header>
+
+          {/* 2026 zine spreads */}
+          <section className="mb-16">
+            <h2 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6">
+              From the 2026 Zine
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {zineMedia.map((item) => (
+                <div
+                  key={item.src}
+                  className={`overflow-hidden rounded-sm ${item.landscape ? 'sm:col-span-2 aspect-[3/2]' : 'aspect-[3/4]'}`}
+                >
+                  <img src={item.src} alt={item.alt} className="w-full h-full object-cover" loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <h2 className="text-2xl md:text-3xl tracking-[-0.02em] font-light mb-4">
+            Designer Interviews
+          </h2>
+          <p className="text-base text-muted-foreground max-w-2xl leading-relaxed mb-6">
+            Here you can explore the full, unedited interviews with our designers and collaborators.
+          </p>
 
           {/* Locked state: title, description, and padlocked CTA only */}
           {!unlocked ? (

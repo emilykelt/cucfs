@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
+  color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -53,7 +53,7 @@ button:focus-visible {
 
 /* Debug: Ensure dark theme is applied */
 .dark {
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 /* Debug: Force dark background */

@@ -8,17 +8,25 @@ export function CommitteePage() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
+  // 2027 Executive Committee. Photos: Eliza and Amali reuse existing files;
+  // Flossie and Olivia show a placeholder until headshots are added to public/committee.
   const executives = [
     {
-      name: "Paige Griffiths",
+      name: "Eliza Doran",
       role: "President",
-      image: "/committee/exec-1.jpg",
+      image: "/Executive_Team/Eliza Doran, Creative Secretary.jpg",
       bio: ""
     },
     {
-      name: "Maddie Wills",
-      role: "Vice-President",
-      image: "/committee/exec-2.jpg",
+      name: "Flossie Bullion",
+      role: "Vice President",
+      image: "/committee/flossie-bullion.jpg",
+      bio: ""
+    },
+    {
+      name: "Olivia Pearce",
+      role: "Treasurer",
+      image: "/committee/olivia-pearce.jpg",
       bio: ""
     },
     {
@@ -26,75 +34,8 @@ export function CommitteePage() {
       role: "General Secretary",
       image: "/committee/exec-3.jpg",
       bio: ""
-    },
-    {
-      name: "Omar Burhanuddin",
-      role: "Treasurer",
-      image: "/committee/exec-4.jpg",
-      bio: ""
     }
   ]
-
-  // Executive Committee members from Executive_Team folder
-  // Files are named: "Name, Role.extension"
-  const executiveCommittee = [
-    {
-      name: "Alexander Newman",
-      role: "Head of Photography",
-      image: "/Executive_Team/Alexander Newman, Head of Photography.jpg"
-    },
-    {
-      name: "Asha Persauld",
-      role: "Creative Director",
-      image: "/Executive_Team/Asha Persauld, Creative Director.jpg"
-    },
-    {
-      name: "Eliza Doran",
-      role: "Creative Secretary",
-      image: "/Executive_Team/Eliza Doran, Creative Secretary.jpg"
-    },
-    {
-      name: "Emaan Hassan",
-      role: "Fashion Director",
-      image: "/Executive_Team/Emaan_Hassan,_Fashion_Director.jpg"
-    },
-    {
-      name: "Iga Szejmo",
-      role: "Welfare Officer",
-      image: "/Executive_Team/Iga Szejmo, Welfare Officer.jpg"
-    },
-    {
-      name: "John Chang",
-      role: "Head of Entertainment",
-      image: "/Executive_Team/John Change, Head of Entertainment.jpg"
-    },
-    {
-      name: "Madeleine Matthews",
-      role: "Head of Sponsorship",
-      image: "/Executive_Team/Madeleine Matthews, Head of Sponsorship.jpg"
-    },
-    {
-      name: "Sofia Farooqi",
-      role: "Welfare Officer",
-      image: "/Executive_Team/Sofia Farooqi, Welfare Officer.jpg"
-    },
-    {
-      name: "Yvonne Gao",
-      role: "Zine Editor-In-Chief",
-      image: "/Executive_Team/Yvonne Gao, Zine Editor-In-Chief.jpg"
-    }
-  ]
-
-  // const committee = [
-  //   { name: "James Park", role: "Marketing Lead", image: "https://images.unsplash.com/photo-1629922949137-e236a5ab497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pbWFsaXN0JTIwZmFzaGlvbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc1NzUyNjQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
-  //   { name: "Emma Thompson", role: "Stylist Coordinator", image: "https://images.unsplash.com/photo-1629922949137-e236a5ab497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pbWFsaXN0JTIwZmFzaGlvbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc1NzUyNjQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
-  //   { name: "David Kim", role: "Finance Director", image: "https://images.unsplash.com/photo-1629922949137-e236a5ab497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pbWFsaXN0JTIwZmFzaGlvbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc1NzUyNjQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
-  //   { name: "Maya Patel", role: "Social Media Manager", image: "https://images.unsplash.com/photo-1629922949137-e236a5ab497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pbWFsaXN0JTIwZmFzaGlvbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc1NzUyNjQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
-  //   { name: "Oliver Chen", role: "Photography Lead", image: "https://images.unsplash.com/photo-1629922949137-e236a5ab497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pbWFsaXN0JTIwZmFzaGlvbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc1NzUyNjQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
-  //   { name: "Zara Ahmed", role: "Sustainability Officer", image: "https://images.unsplash.com/photo-1629922949137-e236a5ab497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pbWFsaXN0JTIwZmFzaGlvbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc1NzUyNjQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
-  //   { name: "Lucas Thompson", role: "Technical Director", image: "https://images.unsplash.com/photo-1629922949137-e236a5ab497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pbWFsaXN0JTIwZmFzaGlvbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc1NzUyNjQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
-  //   { name: "Isabella Martinez", role: "Volunteer Coordinator", image: "https://images.unsplash.com/photo-1629922949137-e236a5ab497d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pbWFsaXN0JTIwZmFzaGlvbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc1NzUyNjQ0M3ww&ixlib=rb-4.1.0&q=80&w=1080" }
-  // ]
 
   return (
     <div className="pt-24">
@@ -127,7 +68,7 @@ export function CommitteePage() {
             transition={{ duration: 0.8 }}
             className="text-4xl font-light tracking-[-0.01em] text-center mb-16"
           >
-            The President's Committee
+            The Executive Committee
           </motion.h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -160,47 +101,6 @@ export function CommitteePage() {
                     {member.bio}
                   </p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Executive Committee */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl font-light tracking-[-0.01em] text-center mb-12"
-          >
-            The Executive Committee
-          </motion.h2>
-          
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-            {executiveCommittee.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group text-center"
-              >
-                <div className="aspect-[3/4] overflow-hidden mb-4 relative">
-                  <ImageWithFallback
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-300" />
-                </div>
-                <h3 className="text-lg font-light tracking-wide mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-xs text-muted-foreground tracking-wider uppercase">
-                  {member.role}
-                </p>
               </motion.div>
             ))}
           </div>

@@ -42,3 +42,11 @@ public/archive/
 !public/committee/**
 !public/Executive_Team/
 !public/Executive_Team/** 
+.vercel
+!public/archive/
+!public/archive/**
+!public/zine/
+!public/zine/**
+!public/fonts/
+!public/fonts/**
+!public/hero_model.webp

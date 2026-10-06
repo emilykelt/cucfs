@@ -84,123 +84,12 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
 
 export function PartnersPage() {
   const ref = useRef(null)
   // const isInView = useInView(ref, { once: true, margin: "-100px" })
   const isMobile = useIsMobile()
-
-  const partners = [
-    // Main Sponsor
-    { 
-      name: "Arttoo", 
-      description: "Fractional investment platform for iconic art pieces (Sotheby's, Christie's). Supports provenance tracking and community investment."
-    },
-    // Red Carpet Sponsor
-    { 
-      name: "Brockway Carpets", 
- 
-      description: "Premium wool carpets, family-run, eco-friendly production."
-    },
-    // Fashion & Lifestyle
-    { 
-      name: "MuJu Star", 
- 
-      description: "Fashion brand specialising in T-shirts and Cami Tops. 'It Girl Energy.'"
-    },
-    { 
-      name: "ByEloise London", 
- 
-      description: "Premium hairbands that double as bangles, gift boxes shortlisted for 'Gift of the Year 2025.'"
-    },
-    // Food & Beverage
-    { 
-      name: "Jack's Gelato", 
- 
-      description: "Handmade ice cream and sorbets, Cambridge favourite."
-    },
-    { 
-      name: "Pages Coffee", 
- 
-      description: "Independent coffee house in Cambridge city centre."
-    },
-    { 
-      name: "Pimentae Drinks", 
- 
-      description: "Bar-quality tequila cocktails in bottles, focus on experience and sustainability."
-    },
-    { 
-      name: "Café Au Chocolat", 
- 
-      description: "Crêpes, patisserie, coffee, and artisan chocolates inspired by French traditions."
-    },
-    { 
-      name: "Saffron Walden Coffee Company", 
- 
-      description: "Independent roasters, small-batch specialty coffee."
-    },
-    { 
-      name: "XIX Vodka", 
- 
-      description: "Vodka brand from the Sidemen, including pre-mixed Vodka Spritz."
-    },
-    { 
-      name: "HumaniTea", 
- 
-      description: "UK's first plant-based tea lattes in cans (Matcha, Earl Grey). Social enterprise."
-    },
-    { 
-      name: "KAYTEA", 
- 
-      description: "Creative tea brand founded in 2020, known for matcha lattes and iced teas."
-    },
-    // Snacks & Treats
-    { 
-      name: "Savoursmiths Crisps", 
- 
-      description: "Luxury crisps, bold flavours like Wagyu Beef & Truffle."
-    },
-    { 
-      name: "Simply Roasted Crisps", 
- 
-      description: "Healthier crisps roasted in unique ovens, 50% less fat."
-    },
-    { 
-      name: "DROOLY", 
- 
-      description: "Artisan brownies and baked treats with innovative flavours."
-    },
-    { 
-      name: "Coupe Rocks", 
- 
-      description: "Alcohol-free cocktail subscription boxes and gift sets."
-    },
-    // Business Services
-    { 
-      name: "RCDS Concrete", 
- 
-      description: "Specialists in reinforced concrete detailing, projects include Tottenham Stadium & Liverpool FC stand."
-    },
-        // College Sponsors
-    { 
-      name: "Christ's College", 
- 
-      description: "Cambridge college supporting the show through donations."
-    },
-    { 
-      name: "Jesus College", 
- 
-      description: "Cambridge college supporting the show through donations."
-    },
-    { 
-      name: "Lucy Cavendish College", 
- 
-      description: "Cambridge college supporting the show through donations."
-    },
-  ]
-
 
   return (
     <div className="min-h-screen pt-32 pb-20" ref={ref}>
@@ -235,19 +124,6 @@ export function PartnersPage() {
                 </a> for more information or to express interest in sponsoring the show.
               </p>
             </div>
-            <div className="flex-shrink-0 flex justify-center md:justify-end">
-              {/* Dark mode: white logo, Light mode: black logo */}
-              <img
-                src="/ine/fetchai_logo_white.svg"
-                alt="Fetch.ai Logo"
-                className="h-12 w-auto hidden dark:block"
-              />
-              <img
-                src="/ine/fetchai_logo_black.svg"
-                alt="Fetch.ai Logo"
-                className="h-12 w-auto block dark:hidden"
-              />
-            </div>
           </div>
         </motion.div>
 
@@ -258,39 +134,8 @@ export function PartnersPage() {
           transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.4 }}
           className="mb-20"
         >
-          <h2 className="text-3xl font-light text-center mb-12">Our 2025 Sponsors & Partners</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {partners.map((partner, index) => (
-              <motion.div
-                key={index}
-                initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.6 + index * 0.1 }}
-                className="group"
-              >
-                <Card className="h-full relative group border border-border/20 hover:border-primary/20 overflow-hidden hover:shadow-lg transition-all duration-300">
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/80 to-pink-500/20 opacity-10 group-hover:opacity-30 blur-[2px] transition-all duration-500" />
-                
-                {/* Card content wrapper */}
-                <div className="relative z-10 p-4">
-                    <CardHeader className="pb-3">
-                    <CardTitle className="text-base font-medium tracking-wide mb-2 group-hover:text-primary transition-colors duration-300">
-                        {partner.name}
-                    </CardTitle>
-                    </CardHeader>
-                    
-                    <CardContent className="pt-0">
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                        {partner.description}
-                    </p>
-                    </CardContent>
-                </div>
-                </Card>
-
-              </motion.div>
-            ))}
-          </div>
+          <h2 className="text-3xl font-light text-center mb-6">Our 2027 Sponsors & Partners</h2>
+          <p className="text-center text-muted-foreground text-lg">To be announced soon.</p>
         </motion.div>
 
         {/* Contact Section */}

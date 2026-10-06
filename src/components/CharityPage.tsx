@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Heart, Target, Globe } from 'lucide-react'
+import { REVEAL_2027 } from '../config/reveal'
 
 export function CharityPage() {
   const charities = [
@@ -66,19 +67,23 @@ export function CharityPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12"
           >
-            Cambridge University Charity Fashion Show was proud to support four incredible charities in 2025, raising £4700. 
-            This year, we are delighted to be supporting Refuge.
+            Every thread, design, and moment on our runway contributes to causes that matter.
+            {REVEAL_2027
+              ? ' This year, we are excited to announce our support of Everyone’s Invited.'
+              : ' Our 2027 charity will be announced soon.'}
           </motion.p>
           <div className="flex items-center justify-center gap-6 mt-6">
+            {REVEAL_2027 && (
             <a
-              href="https://refuge.org.uk/"
+              href="https://www.everyonesinvited.uk/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium"
             >
               <Globe className="w-4 h-4" />
-              Visit Refuge
+              Visit Everyone’s Invited
             </a>
+            )}
 
             <a
               href="http://www.justgiving.com/team/cucfsmodels2526"
@@ -94,15 +99,51 @@ export function CharityPage() {
         </div>
       </section>
 
-      {/* Charities Grid */}
+      {/* 2026: Refuge */}
+      <section className="pt-10 pb-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl tracking-[-0.02em] font-light mb-8 text-center"
+          >
+            2026: REFUGE
+          </motion.h2>
+          <div className="bg-card rounded-2xl p-8 shadow-lg space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Refuge is the largest specialist domestic abuse organisation in the UK. They support thousands of women and children who have experienced domestic abuse. Support is offered through a range of services such as emergency accommodation, community outreach, legal help, benefits, support for children, and a 24/7 National Domestic Abuse helpline. One in four women will experience domestic abuse at some point in their lifetime.
+            </p>
+            <p>
+              In 2024, Refuge first launched its ‘Brick by Brick’ campaign in association with The Independent and Persimmon Homes. This initiative has enabled new refuges to be built for survivors to live safely and comfortably.
+            </p>
+            <p className="text-foreground font-medium">In 2026, CUCFS was able to raise £5,526.58 for Refuge.</p>
+            <a
+              href="https://refuge.org.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium"
+            >
+              <Globe className="w-4 h-4" />
+              Visit Refuge
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 2025 Charities */}
         <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl tracking-[-0.02em] font-light mb-6 text-center"
           >
-            2025's CHARITIES
+            2025: FOUR CHARITIES
           </motion.h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto px-6 text-center leading-relaxed">
+            In 2025, we raised over £4,700, which was split equally between all our four charities.
+            Another £238 was raised by the RAG team, which operated the cloakroom on the night of the show.
+          </p>
       <section className="pt-10 pb-10 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">

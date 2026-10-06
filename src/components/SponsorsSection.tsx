@@ -25,31 +25,6 @@ export function SponsorsSection({ onNavigation }: SponsorsSectionProps) {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const isMobile = useIsMobile()
 
-  const sponsors = [
-    { name: 'Arttoo', tier: 'Main Sponsor' },
-    { name: 'Brockway Carpets', tier: 'Red Carpet Sponsor' },
-    { name: "Christ's College", tier: 'College Sponsor' },
-    { name: 'Jesus College', tier: 'College Sponsor' },
-    { name: 'Lucy Cavendish College', tier: 'College Sponsor' },
-    { name: 'MuJu Star', tier: 'Fashion Partner' },
-    { name: 'ByEloise London', tier: 'Fashion Partner' },
-    { name: "Jack's Gelato", tier: 'Food Partner' },
-    { name: 'Pages Coffee', tier: 'Food Partner' },
-    { name: 'Pimentae Drinks', tier: 'Beverage Partner' },
-    { name: 'Café Au Chocolat', tier: 'Food Partner' },
-    { name: 'Saffron Walden Coffee Company', tier: 'Beverage Partner' },
-    { name: 'XIX Vodka', tier: 'Beverage Partner' },
-    { name: 'HumaniTea', tier: 'Beverage Partner' },
-    { name: 'KAYTEA', tier: 'Beverage Partner' },
-    { name: 'Savoursmiths Crisps', tier: 'Food Partner' },
-    { name: 'Simply Roasted Crisps', tier: 'Food Partner' },
-    { name: 'DROOLY', tier: 'Food Partner' },
-    { name: 'Coupe Rocks', tier: 'Beverage Partner' },
-    { name: 'RCDS Concrete', tier: 'Business Partner' }
-  ]
-
-  const duplicatedSponsors = [...sponsors, ...sponsors]
-
   return (
     <section id="sponsors" className="py-12 px-6 relative" ref={ref}>
       <PurpleGlare position="top-left" intensity={0.3} />
@@ -75,7 +50,7 @@ export function SponsorsSection({ onNavigation }: SponsorsSectionProps) {
               </h2>
               <div className="w-16 h-px bg-foreground mx-auto md:mx-0 mb-4" />
               <p className="text-base text-muted-foreground max-w-2xl md:max-w-xl mx-auto md:mx-0 leading-relaxed">
-                Thank you to our incredible sponsors who make the Cambridge University Charity Fashion Show possible, and especially to our primary sponsor Fetch.ai.
+                Our 2027 partners will be announced soon.
               </p>
               <div className="mt-4">
                 <button
@@ -86,68 +61,9 @@ export function SponsorsSection({ onNavigation }: SponsorsSectionProps) {
                 </button>
               </div>
             </div>
-            <div className="flex-shrink-0 flex justify-center md:justify-end">
-              {/* Dark mode: white logo, Light mode: black logo */}
-              <img
-                src="/ine/fetchai_logo_white.svg"
-                alt="Fetch.ai"
-                className="h-12 w-auto hidden dark:block"
-              />
-              <img
-                src="/ine/fetchai_logo_black.svg"
-                alt="Fetch.ai"
-                className="h-12 w-auto block dark:hidden"
-              />
-            </div>
           </div>
         </motion.div>
 
-        {/* Desktop: Infinite auto-scroll */}
-        {!isMobile && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative overflow-hidden"
-          >
-            <div className="flex">
-              <motion.div
-                className="flex whitespace-nowrap"
-                animate={{ x: [0, '-50%'] }}
-                transition={{
-                  x: { repeat: Infinity, repeatType: 'loop', duration: 40, ease: 'linear' }
-                }}
-              >
-                {duplicatedSponsors.map((sponsor, index) => (
-                  <div
-                    key={`${sponsor.name}-${index}`}
-                    className="flex-shrink-0 px-8 py-4 mx-4 text-2xl md:text-3xl font-light tracking-wide text-muted-foreground hover:text-foreground transition-colors duration-300"
-                  >
-                    {sponsor.name}
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Gradient fades */}
-            <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-            <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
-          </motion.div>
-        )}
-
-        {/* Mobile: Static scrollable list */}
-        {isMobile && (
-          <div className="overflow-x-auto flex gap-8 scrollbar-thin scrollbar-thumb-muted-foreground/40 scrollbar-track-transparent py-4 -mx-6 px-6">
-            {sponsors.map((sponsor, index) => (
-              <div
-                key={`${sponsor.name}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center text-center min-w-[200px] text-base font-light text-muted-foreground hover:text-foreground transition-colors duration-300"
-              >
-                {sponsor.name}
-              </div>
-            ))}
-          </div>
-        )}
       </motion.div>
     </section>
   )

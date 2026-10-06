@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { PurpleGlare } from './PurpleGlare'
+import { REVEAL_2027 } from '../config/reveal'
 
 interface CharitySectionProps {
   onSectionClick?: (sectionId: string) => void
@@ -58,7 +59,9 @@ export function CharitySection({ onSectionClick, onNavigation }: CharitySectionP
                 Each year, we carefully select new beneficiaries that reflect our evolving mission.
               </p>
               <p className="font-medium">
-                We are happy to announce our support of Refuge this year.
+                {REVEAL_2027
+                  ? 'We are excited to announce our support of Everyone’s Invited this year.'
+                  : 'Our 2027 charity will be announced soon.'}
               </p>
             </div>
             <button
@@ -69,61 +72,32 @@ export function CharitySection({ onSectionClick, onNavigation }: CharitySectionP
             </button>
           </motion.div>
 
-          {/* Right side - Charity names and images */}
+          {/* Right side - this year's charity */}
           <motion.div
             initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             animate={isMobile || isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.2 }}
-            className="grid grid-cols-2 gap-4"
           >
-            {/* Cambridge Curiosity and Imagination */}
-            <div className="bg-card/50 p-4 rounded-lg border border-border/20 hover:border-border/40 transition-all duration-300">
-              <div className="w-12 h-12 mb-3 flex items-center justify-center">
-                <img
-                  src="/camcuriosity-logo.svg"
-                  alt="Cambridge Curiosity and Imagination Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <h4 className="text-sm font-medium mb-2">
-                Cambridge Curiosity and Imagination
-              </h4>
-            </div>
-
-            {/* Sew Positive */}
-            <div className="bg-card/50 p-4 rounded-lg border border-border/20 hover:border-border/40 transition-all duration-300">
-              <div className="w-12 h-12 mb-3 flex items-center justify-center">
-                <img
-                  src="/sew-logo.png"
-                  alt="Sew Positive Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <h4 className="text-sm font-medium mb-2">Sew Positive</h4>
-            </div>
-
-            {/* Beat */}
-            <div className="bg-card/50 p-4 rounded-lg border border-border/20 hover:border-border/40 transition-all duration-300">
-              <div className="w-12 h-12 mb-3 flex items-center justify-center">
-                <img
-                  src="/beat-logo.png"
-                  alt="Beat Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <h4 className="text-sm font-medium mb-2">Beat</h4>
-            </div>
-
-            {/* Pink Week */}
-            <div className="bg-card/50 p-4 rounded-lg border border-border/20 hover:border-border/40 transition-all duration-300">
-              <div className="w-12 h-12 mb-3 flex items-center justify-center">
-                <img
-                  src="/pinkweek-logo.png"
-                  alt="Pink Week Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <h4 className="text-sm font-medium mb-2">Pink Week</h4>
+            <div className="bg-card/50 p-8 rounded-lg border border-border/20 hover:border-border/40 transition-all duration-300">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">2027 Charity</p>
+              {REVEAL_2027 ? (
+                <>
+              <h4 className="text-2xl md:text-3xl font-light tracking-wide mb-4">Everyone’s Invited</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                A charity working to eradicate rape culture from the bottom up.
+              </p>
+              <a
+                href="https://www.everyonesinvited.uk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm underline hover:text-muted-foreground transition-colors duration-300"
+              >
+                Visit Everyone’s Invited
+              </a>
+                </>
+              ) : (
+                <h4 className="text-2xl md:text-3xl font-light tracking-wide">To be announced soon</h4>
+              )}
             </div>
           </motion.div>
         </div>
