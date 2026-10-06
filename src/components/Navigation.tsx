@@ -19,7 +19,6 @@ interface NavigationProps {
 }
 
 export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYear }: NavigationProps) {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -34,16 +33,6 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
     { id: 'contact', label: 'Contact', type: 'page' as const },
     { id: 'book', label: 'Book', type: 'external' as const, url: 'https://fetch.ai/cucfs' }
   ]
-
-  useEffect(() => {
-    // Hysteresis so the bar does not flicker when hovering around the threshold
-    const handleScroll = () => {
-      const y = window.scrollY
-      setIsScrolled((prev) => (prev ? y > 20 : y > 80))
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
@@ -78,11 +67,7 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
     initial={{ y: 0, opacity: 1 }}
     animate={{ y: 0, opacity: 1 }}
   
-        className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-300 ${
-          isScrolled
-            ? 'bg-background border-border/20'
-            : 'bg-transparent border-transparent nav-blend'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-transparent nav-blend"
       >
         <div className="flex items-center justify-between px-8 py-5 max-w-full">
           {/* Logo - positioned at very left edge */}
@@ -91,7 +76,7 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
             className="cursor-pointer flex-shrink-0"
             onClick={() => onNavigation('home', 'home')}
           >
-            <Logo className="h-10" forceWhite={!isScrolled} />
+            <Logo className="h-10" forceWhite />
           </motion.div>
 
           {/* Centre: Home, then the archive years */}
