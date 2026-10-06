@@ -33,7 +33,7 @@ export function HeroSection({ onSectionClick }: HeroSectionProps) {
       </div>
 
       <motion.div 
-        className="relative z-10 text-left max-w-6xl mx-auto px-6 flex items-center min-h-screen w-full mix-blend-difference text-white"
+        className="relative z-10 text-left max-w-6xl mx-auto px-6 flex items-center min-h-screen mix-blend-difference text-white"
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
       >
