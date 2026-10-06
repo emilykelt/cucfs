@@ -36,8 +36,10 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
   ]
 
   useEffect(() => {
+    // Hysteresis so the bar does not flicker when hovering around the threshold
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const y = window.scrollY
+      setIsScrolled((prev) => (prev ? y > 20 : y > 80))
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -76,10 +78,10 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
     initial={{ y: 0, opacity: 1 }}
     animate={{ y: 0, opacity: 1 }}
   
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-300 ${
           isScrolled
-            ? 'bg-background border-b border-border/20'
-            : 'bg-transparent nav-blend'
+            ? 'bg-background border-border/20'
+            : 'bg-transparent border-transparent nav-blend'
         }`}
       >
         <div className="flex items-center justify-between px-8 py-5 max-w-full">
@@ -102,7 +104,7 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
             >
               Home
               {currentPage === 'home' && (
-                <motion.span layoutId="nav-underline" className="absolute -bottom-1.5 left-0 right-0 h-px bg-foreground" />
+                <span className="absolute -bottom-1.5 left-0 right-0 h-px bg-foreground" />
               )}
             </button>
 
@@ -128,6 +130,7 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
                       {isActive && (
                         <motion.span
                           layoutId="timeline-thumb"
+                          layout="position"
                           className="absolute -inset-[3px] rounded-full bg-foreground"
                           transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                         />
