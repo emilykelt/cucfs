@@ -336,3 +336,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Hillside Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
   letter-spacing: 0.02em;
 }
+
+/* Transparent top bar: blend against whatever is behind it so the links stay
+   readable over both the page background and the hero backdrop. */
+.nav-blend {
+  mix-blend-mode: difference;
+}
+.nav-blend,
+.nav-blend * {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+.nav-blend .bg-foreground {
+  background-color: #fff !important;
+}
+.nav-blend .bg-background {
+  background-color: #000 !important;
+}

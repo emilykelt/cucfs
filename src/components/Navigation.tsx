@@ -79,7 +79,7 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? 'bg-background border-b border-border/20'
-            : 'bg-background'
+            : 'bg-transparent nav-blend'
         }`}
       >
         <div className="flex items-center justify-between px-8 py-5 max-w-full">
@@ -89,7 +89,7 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
             className="cursor-pointer flex-shrink-0"
             onClick={() => onNavigation('home', 'home')}
           >
-            <Logo className="h-10" />
+            <Logo className="h-10" forceWhite={!isScrolled} />
           </motion.div>
 
           {/* Centre: Home, then the archive years */}

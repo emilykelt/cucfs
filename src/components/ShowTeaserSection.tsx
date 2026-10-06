@@ -5,36 +5,34 @@ interface ShowTeaserSectionProps {
   onSectionClick?: (sectionId: string) => void
 }
 
-// DRAFT COPY: the theme paragraph and walk descriptions below are condensed
-// from the 2027 theme PDF notes and still need committee sign-off.
+// DRAFT COPY: written up from the 2027 theme PDF notes. Needs committee sign-off.
 const walks = [
   {
     number: 'Walk One',
     name: 'His',
-    description: 'The performance of masculinity: a restrictive yet impactful mode of expression.',
+    description: 'Masculinity as performance. A narrow way of dressing that still carries real weight.',
   },
   {
     number: 'Walk Two',
     name: 'Her',
     description:
-      'The performance of femininity: free yet contested, taboo and dangerous. Bolder, experimental and varied, from the ballrooms of eighteenth-century France to the ballrooms of twentieth-century Harlem.',
+      'Femininity as performance. Freer, but contested, sometimes taboo, sometimes dangerous. From the ballrooms of 18th-century France to the ballrooms of 20th-century Harlem.',
   },
   {
     number: 'Walk Three',
     name: 'Macabre',
-    description:
-      'An ode to the key role that darker movements have played in the development of counter-cultural style. A celebration of otherness.',
+    description: 'The darker movements that shaped counter-cultural style, and a celebration of being other.',
   },
   {
     number: 'Walk Four',
     name: 'Filth',
-    description: 'Beauty and ugliness as binary oppositions. Pushing back against, and beyond, tradition.',
+    description: 'Beauty against ugliness. Pushing past what tradition allows.',
   },
   {
     number: 'Walk Five',
     name: 'Perform',
     description:
-      'The show’s ethos: the performative nature of style and fashion, and the countercultural idea of identity as a performance. Bright, bold, unapologetic.',
+      'The heart of the show: style as performance, identity as a role you play. Bright, bold and unapologetic.',
   },
 ]
 
@@ -69,16 +67,14 @@ export function ShowTeaserSection({ onSectionClick }: ShowTeaserSectionProps) {
         {/* Theme description */}
         <div className="max-w-3xl mx-auto text-muted-foreground leading-relaxed space-y-5 mb-12">
           <p>
-            CUCFS 2027 celebrates the fashion and cultural movements that are experimental, alternative
-            and resistant: the modes of expression that have moved, and continue to move, fashion, art
-            and culture to new places. The show recognises how ubiquitously influential this kind of
-            fashion and art has been, and hopes to provoke thought and conversation about the
-            complexities of identity and expression.
+            This year’s show is about the fashion that went the other way: the experimental, the
+            alternative and the resistant. These are the movements that have pushed fashion, art and
+            culture somewhere new, and still do. We want to show how far their influence reaches, and
+            to start a conversation about identity and how we express it.
           </p>
           <p>
-            Performance is integral to fashion. This year we ask how clothes convey, and relate to,
-            meaning, inspired by Susan Sontag’s ideas about aesthetic value, stylisation and artifice in
-            her ‘Notes on Camp’.
+            Performance sits at the centre of all of it. What do clothes mean, and how do they mean it?
+            The starting point is Susan Sontag’s ‘Notes on Camp’ and her ideas about style and artifice.
           </p>
           <blockquote className="border-l border-foreground/40 pl-6 italic">
             ‘Camp sees everything in quotation marks. It’s not a lamp but a ‘lamp’: not a woman, but a
@@ -110,7 +106,7 @@ export function ShowTeaserSection({ onSectionClick }: ShowTeaserSectionProps) {
           <p className="text-sm md:text-base text-muted-foreground mb-8">
             {REVEAL_2027
               ? 'Date and venue to be announced.'
-              : 'Announcement coming soon. Date, venue and theme to be revealed.'}
+              : 'Date, venue and theme coming soon.'}
           </p>
           <Button
             asChild
