@@ -203,7 +203,7 @@ export function Navigation({ currentPage, archiveYear, onNavigation, onArchiveYe
               animate={isMobile ? undefined : { x: 0, opacity: 1 }}
               exit={isMobile ? undefined : { x: 100, opacity: 0 }}
               transition={isMobile ? undefined : { duration: 0.4, ease: "easeOut" }}
-              className="absolute top-0 right-0 h-full w-80 bg-background/90 backdrop-blur-lg overflow-hidden"
+              className="absolute top-0 right-0 h-full w-80 bg-background border-l border-border/20 shadow-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex flex-col h-full pt-24 px-8">
