@@ -28,12 +28,12 @@ export function HeroSection({ onSectionClick }: HeroSectionProps) {
         <img
           src={modelImage}
           alt="CUCFS Fashion model"
-          className="absolute right-0 top-0 h-full w-[80%] sm:w-[70%] md:w-[55%] object-cover object-left"
+          className="absolute right-[5%] top-0 h-full w-[80%] sm:w-[70%] md:w-[55%] object-cover object-left"
         />
       </div>
 
       <motion.div 
-        className="relative z-10 text-left max-w-6xl mx-auto px-6 flex items-center min-h-screen mix-blend-difference text-white"
+        className="relative z-10 text-left max-w-6xl mx-auto px-6 flex items-center min-h-screen -translate-x-6 md:-translate-x-12 mix-blend-difference text-white"
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
       >
