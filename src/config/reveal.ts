@@ -14,4 +14,4 @@ export const REVEAL_THEME_DESCRIPTION = false
 export const REVEAL_WALKS = false
 
 // The 2027 charity on the home page, Charities page and in the President's Letter.
-export const REVEAL_CHARITY = false
+export const REVEAL_CHARITY = true
