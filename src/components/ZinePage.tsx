@@ -21,6 +21,11 @@ const interviews: Interview[] = [
   },
 ]
 
+const zineCovers = [
+  { src: '/zine/zine-2026-cover.jpg', year: '2026', alt: 'Cover of the 2026 CUCFS zine' },
+  { src: '/zine/zine-2025-cover.jpg', year: '2025', alt: 'Cover of the 2025 CUCFS magazine, Beyond the Cover' },
+]
+
 const zineMedia = [
   { src: '/zine/zine-2026-1.jpg', alt: 'Sophie Keates spread from the 2026 CUCFS zine', landscape: true },
   { src: '/zine/zine-2026-2.jpg', alt: '2026 CUCFS zine page', landscape: false },
@@ -95,6 +100,23 @@ export function ZinePage() {
               at the show and afterwards through our online shop.
             </p>
           </header>
+
+          {/* Covers */}
+          <section className="mb-16">
+            <h2 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6">
+              Our Zines
+            </h2>
+            <div className="grid grid-cols-2 gap-4 max-w-2xl">
+              {zineCovers.map((cover) => (
+                <figure key={cover.src}>
+                  <img src={cover.src} alt={cover.alt} className="w-full rounded-sm shadow-lg" loading="lazy" />
+                  <figcaption className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-3">
+                    {cover.year}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
 
           {/* 2026 zine spreads */}
           <section className="mb-16">

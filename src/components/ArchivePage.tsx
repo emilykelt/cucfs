@@ -14,11 +14,15 @@ interface ArchiveYear {
   letter: { heading: string; paragraphs: string[]; signature: string }
   charity: { heading: string; paragraphs: string[]; raised: string }
   walks: Walk[]
+  // Gallery photos not tied to a walk, shown before or after the walk photos
+  galleryBefore?: string[]
+  galleryAfter?: string[]
 }
 
 const years: ArchiveYear[] = [
   {
     year: '2026',
+    galleryAfter: ['/archive/2026/extra-1.jpg', '/archive/2026/extra-2.jpg'],
     theme: 'A Walk of Becoming',
     themeDescription: [
       'This show takes you through the historical oscillation of fashion as a mode of expression, with each walk focusing broadly on a different era of history or creativity. Historical motifs are constantly resurging in the fashion world today, and CUCFS 2026 is an ode to the intersection of social change and design.',
@@ -93,6 +97,7 @@ const years: ArchiveYear[] = [
   },
   {
     year: '2025',
+    galleryBefore: Array.from({ length: 12 }, (_, i) => `/archive/2025/extra-${i + 1}.jpg`),
     theme: 'Beyond the Cover',
     themeDescription: [
       'The CUCFS 2025 show explored the theme ‘Beyond the Cover’, aiming to unveil how iconic publications have shaped our perceptions of style, culture, and society, inviting audiences to look deeper into the stories fashion tells. Each magazine represents a distinct aspect of society, and the theme delves into how these elements converge through fashion to tell stories that transcend the surface.',
@@ -165,9 +170,14 @@ interface ArchivePageProps {
 
 export function ArchivePage({ year, onYearChange }: ArchivePageProps) {
   const y = years.find((entry) => entry.year === year) ?? years[0]
-  const gallery = y.walks.flatMap((walk) =>
-    (walk.images ?? []).map((src) => ({ src, alt: `${walk.name}, CUCFS ${y.year}` }))
-  )
+  const showPhoto = (src: string) => ({ src, alt: `CUCFS ${y.year}` })
+  const gallery = [
+    ...(y.galleryBefore ?? []).map(showPhoto),
+    ...y.walks.flatMap((walk) =>
+      (walk.images ?? []).map((src) => ({ src, alt: `${walk.name}, CUCFS ${y.year}` }))
+    ),
+    ...(y.galleryAfter ?? []).map(showPhoto),
+  ]
 
   return (
     <div className="pt-24">

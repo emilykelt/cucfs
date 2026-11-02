@@ -9,12 +9,11 @@ export function CommitteePage() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   // 2027 Executive Committee. Photos: Eliza and Amali reuse existing files;
-  // Flossie and Olivia show a placeholder until headshots are added to public/committee.
   const executives = [
     {
       name: "Eliza Doran",
       role: "President",
-      image: "/Executive_Team/Eliza Doran, Creative Secretary.jpg",
+      image: "/committee/eliza-doran.jpg",
       bio: ""
     },
     {
@@ -32,7 +31,7 @@ export function CommitteePage() {
     {
       name: "Amali Carter",
       role: "General Secretary",
-      image: "/committee/exec-3.jpg",
+      image: "/committee/amali-carter.jpg",
       bio: ""
     }
   ]
@@ -80,7 +79,7 @@ export function CommitteePage() {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 className="group"
               >
-                <div className="aspect-[3/4] overflow-hidden mb-6 relative">
+                <div className="aspect-[4/5] overflow-hidden mb-6 relative">
                   <ImageWithFallback
                     src={member.image}
                     alt={member.name}
