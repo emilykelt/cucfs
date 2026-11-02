@@ -60,7 +60,7 @@ export function CharitySection({ onSectionClick, onNavigation }: CharitySectionP
               </p>
               <p className="font-medium">
                 {REVEAL_CHARITY
-                  ? 'We are excited to announce our support of Everyone’s Invited this year.'
+                  ? 'We are happy to announce our support of Everyone’s Invited this year.'
                   : 'Our 2027 charity will be announced soon.'}
               </p>
             </div>
