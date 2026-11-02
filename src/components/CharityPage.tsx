@@ -68,9 +68,7 @@ export function CharityPage() {
             className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12"
           >
             Every thread, design, and moment on our runway contributes to causes that matter.
-            {REVEAL_CHARITY
-              ? ' This year, we are excited to announce our support of Everyone’s Invited.'
-              : ' Our 2027 charity will be announced soon.'}
+            {!REVEAL_CHARITY && ' Our 2027 charity will be announced soon.'}
           </motion.p>
           <div className="flex items-center justify-center gap-6 mt-6">
             {REVEAL_CHARITY && (
@@ -98,6 +96,45 @@ export function CharityPage() {
 
         </div>
       </section>
+
+      {/* 2027: Everyone's Invited */}
+      {REVEAL_CHARITY && (
+      <section className="pt-10 pb-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl tracking-[-0.02em] font-light mb-8 text-center"
+          >
+            2027: EVERYONE’S INVITED
+          </motion.h2>
+          <div className="bg-card rounded-2xl p-8 shadow-lg space-y-4 text-muted-foreground leading-relaxed">
+            <p className="text-foreground font-medium">
+              We’re very proud to announce that we’ve partnered with Everyone’s Invited for this year’s show.
+            </p>
+            <p>
+              Everyone’s Invited provide a safe space for survivors to share their stories, giving them a sense of catharsis, empowerment and a feeling of community and hope. They educate young people to empower school communities to foster healthy relationships, sexual well-being and to tackle rape culture.
+            </p>
+            <p>
+              They advocate for survivors, amplifying their voices to foster positive change and engaging with government, institutions and key stakeholders.
+            </p>
+            <p>
+              Our aim is to raise funds to directly support services provided by Everyone’s Invited, to create meaningful change and advocate for awareness and education.
+            </p>
+            <a
+              href="https://www.everyonesinvited.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 text-sm font-medium"
+            >
+              <Globe className="w-4 h-4" />
+              Visit Everyone’s Invited
+            </a>
+          </div>
+        </div>
+      </section>
+      )}
 
       {/* 2026: Refuge */}
       <section className="pt-10 pb-16 px-6">

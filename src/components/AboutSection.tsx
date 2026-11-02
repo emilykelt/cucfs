@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { PurpleGlare } from './PurpleGlare'
-import { REVEAL_CHARITY } from '../config/reveal'
+import { REVEAL_CHARITY, REVEAL_THEME } from '../config/reveal'
 
 interface AboutSectionProps {
   onSectionClick?: (sectionId: string) => void
@@ -66,6 +66,11 @@ export function AboutSection({ onSectionClick }: AboutSectionProps) {
               {/* TODO: replace XYZ with the 2026 designer and design counts */}
               Our 2026 show titled, ‘A Walk of Becoming’ celebrated the intersection between social change and design, with each walk focusing on an era of history or creativity. We featured XYZ designers, and XYZ designs, with all proceeds being donated to the charity, Refuge.
               </p>
+              {REVEAL_THEME && (
+              <p>
+              This year, we’re really excited and proud to be collaborating with amazing designers to celebrate fashion and cultural movements that are experimental, extravagant and resistant, as part of our 2027 theme ‘The Other Way’. Beyond being a fashion pun on ‘runway’, on the most simple and literal level, ‘The Other Way’ is the definition of alternative, of deviating from the traditional ‘way’ of things.
+              </p>
+              )}
               <p>
               Stay tuned for more information about our upcoming 2027 show!
               </p>
