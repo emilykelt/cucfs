@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef, } from 'react'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { REVEAL_2027 } from '../config/reveal'
+import { REVEAL_THEME } from '../config/reveal'
 
 // CUCFS model image
 const modelImage = '/hero_model.webp'
@@ -67,7 +67,7 @@ export function HeroSection({ onSectionClick }: HeroSectionProps) {
             <p className="text-lg tracking-wide text-white/80 leading-none">
              Charity Fashion Show
             </p>
-            {REVEAL_2027 && (
+            {REVEAL_THEME && (
               <p className="text-lg tracking-wide leading-[3rem]">
                #TheOtherWay
               </p>

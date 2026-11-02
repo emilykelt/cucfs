@@ -3,7 +3,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { PurpleGlare } from './PurpleGlare'
-import { REVEAL_2027 } from '../config/reveal'
+import { REVEAL_CHARITY } from '../config/reveal'
 
 interface CharitySectionProps {
   onSectionClick?: (sectionId: string) => void
@@ -59,7 +59,7 @@ export function CharitySection({ onSectionClick, onNavigation }: CharitySectionP
                 Each year, we carefully select new beneficiaries that reflect our evolving mission.
               </p>
               <p className="font-medium">
-                {REVEAL_2027
+                {REVEAL_CHARITY
                   ? 'We are excited to announce our support of Everyone’s Invited this year.'
                   : 'Our 2027 charity will be announced soon.'}
               </p>
@@ -80,7 +80,7 @@ export function CharitySection({ onSectionClick, onNavigation }: CharitySectionP
           >
             <div className="bg-card/50 p-8 rounded-lg border border-border/20 hover:border-border/40 transition-all duration-300">
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">2027 Charity</p>
-              {REVEAL_2027 ? (
+              {REVEAL_CHARITY ? (
                 <>
               <h4 className="text-2xl md:text-3xl font-light tracking-wide mb-4">Everyone’s Invited</h4>
               <p className="text-sm text-muted-foreground leading-relaxed mb-6">

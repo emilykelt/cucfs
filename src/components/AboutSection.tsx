@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { PurpleGlare } from './PurpleGlare'
-import { REVEAL_2027 } from '../config/reveal'
+import { REVEAL_CHARITY } from '../config/reveal'
 
 interface AboutSectionProps {
   onSectionClick?: (sectionId: string) => void
@@ -86,7 +86,7 @@ export function AboutSection({ onSectionClick }: AboutSectionProps) {
                 </p>
                 <p className="italic">
                   Community is at the heart of CUCFS and it is something we are continually endeavouring to strengthen; we are immensely proud this year to be championing{' '}
-                  {REVEAL_2027 ? (
+                  {REVEAL_CHARITY ? (
                     'Everyone’s Invited, a charity working to eradicate rape culture from the bottom up.'
                   ) : (
                     <>

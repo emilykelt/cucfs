@@ -1,5 +1,5 @@
 import { Button } from './ui/button'
-import { REVEAL_2027 } from '../config/reveal'
+import { REVEAL_THEME, REVEAL_WALKS } from '../config/reveal'
 
 interface ShowTeaserSectionProps {
   onSectionClick?: (sectionId: string) => void
@@ -48,7 +48,7 @@ export function ShowTeaserSection({ onSectionClick }: ShowTeaserSectionProps) {
           <h2 className="text-4xl md:text-5xl tracking-[-0.02em] font-light mb-6">
             The Show
           </h2>
-          {REVEAL_2027 && (
+          {REVEAL_THEME && (
             <>
           <h3 className="text-sm uppercase tracking-[0.15em] text-muted-foreground mb-2">
             2027 Theme
@@ -62,9 +62,8 @@ export function ShowTeaserSection({ onSectionClick }: ShowTeaserSectionProps) {
           <div className="w-24 h-px bg-foreground mx-auto" />
         </div>
 
-        {REVEAL_2027 && (
-          <>
-        {/* Theme description */}
+        {REVEAL_THEME && (
+        /* Theme description */
         <div className="max-w-3xl mx-auto text-muted-foreground leading-relaxed space-y-5 mb-12">
           <p>
             This year’s show is about the fashion that went the other way: the experimental, the
@@ -83,8 +82,10 @@ export function ShowTeaserSection({ onSectionClick }: ShowTeaserSectionProps) {
             <span className="block not-italic text-xs tracking-widest mt-3">— Susan Sontag, Notes on Camp</span>
           </blockquote>
         </div>
+        )}
 
-        {/* Walks */}
+        {REVEAL_WALKS && (
+        /* Walks */
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-14">
           {walks.map((walk) => (
             <div
@@ -97,14 +98,12 @@ export function ShowTeaserSection({ onSectionClick }: ShowTeaserSectionProps) {
             </div>
           ))}
         </div>
-
-          </>
         )}
 
         {/* Date / venue + Instagram */}
         <div className="text-center">
           <p className="text-sm md:text-base text-muted-foreground mb-8">
-            {REVEAL_2027
+            {REVEAL_THEME
               ? 'Date and venue to be announced.'
               : 'Date, venue and theme coming soon.'}
           </p>

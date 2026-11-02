@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Heart, Target, Globe } from 'lucide-react'
-import { REVEAL_2027 } from '../config/reveal'
+import { REVEAL_CHARITY } from '../config/reveal'
 
 export function CharityPage() {
   const charities = [
@@ -68,12 +68,12 @@ export function CharityPage() {
             className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12"
           >
             Every thread, design, and moment on our runway contributes to causes that matter.
-            {REVEAL_2027
+            {REVEAL_CHARITY
               ? ' This year, we are excited to announce our support of Everyone’s Invited.'
               : ' Our 2027 charity will be announced soon.'}
           </motion.p>
           <div className="flex items-center justify-center gap-6 mt-6">
-            {REVEAL_2027 && (
+            {REVEAL_CHARITY && (
             <a
               href="https://www.everyonesinvited.uk/"
               target="_blank"
