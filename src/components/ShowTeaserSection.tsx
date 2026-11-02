@@ -1,5 +1,5 @@
 import { Button } from './ui/button'
-import { REVEAL_THEME, REVEAL_WALKS } from '../config/reveal'
+import { REVEAL_THEME, REVEAL_THEME_DESCRIPTION, REVEAL_WALKS } from '../config/reveal'
 
 interface ShowTeaserSectionProps {
   onSectionClick?: (sectionId: string) => void
@@ -62,7 +62,7 @@ export function ShowTeaserSection({ onSectionClick }: ShowTeaserSectionProps) {
           <div className="w-24 h-px bg-foreground mx-auto" />
         </div>
 
-        {REVEAL_THEME && (
+        {REVEAL_THEME_DESCRIPTION && (
         /* Theme description */
         <div className="max-w-3xl mx-auto text-muted-foreground leading-relaxed space-y-5 mb-12">
           <p>
