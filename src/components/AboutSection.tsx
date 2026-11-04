@@ -63,8 +63,7 @@ export function AboutSection({ onSectionClick }: AboutSectionProps) {
               The Cambridge University Charity Fashion Show first launched in 2014, and since then, has hosted an annual show to celebrate emerging student designers and their passion for creativity, as well as championing charities who create positive change in our local Cambridge community.
               </p>
               <p>
-              {/* TODO: replace XYZ with the 2026 designer and design counts */}
-              Our 2026 show titled, ‘A Walk of Becoming’ celebrated the intersection between social change and design, with each walk focusing on an era of history or creativity. We featured XYZ designers, and XYZ designs, with all proceeds being donated to the charity, Refuge.
+              Our 2026 show titled, ‘A Walk of Becoming’ celebrated the intersection between social change and design, with each walk focusing on an era of history or creativity. We featured 45 designers, and 152 designs, with all proceeds being donated to the charity, Refuge.
               </p>
               {REVEAL_THEME && (
               <p>
